@@ -1,4 +1,4 @@
-- name: clone neochi-core
+- name: clone kinesis
   git:
     repo: 'https://github.com/mpsamurai/kinesis.git'
     dest: /neochi/kinesis
