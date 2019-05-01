@@ -1,4 +1,4 @@
-- name: install libasound 
+- name: install libasound
   apt:
     name: 'libasound2-dev'
     state: present
@@ -25,9 +25,3 @@
     dest: /neochi/clap-detector
   become: true
   become_user: pi
-
-- name: Create symlink to neochi-core
-  file:
-    src: "/neochi/neochi-core/src/neochi"
-    dest: "/neochi/clap-detector/src/neochi"
-    state: link
