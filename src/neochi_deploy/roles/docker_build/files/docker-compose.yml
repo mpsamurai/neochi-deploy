@@ -10,6 +10,8 @@ services:
       dockerfile: Dockerfile-raspbian
     volumes:
       - /neochi/neochi-core/src/neochi:/code/neochi
+    environment:
+      - PYTHONUNBUFFERED=1
     depends_on:
       - redis
   ir_receiver:
@@ -20,6 +22,8 @@ services:
       - /neochi/data/ir:/data # リモコン信号ファイルの保存先。/dataはアプリ内でハードコードされているので注意
       - /neochi/neochi-core/src/neochi:/code/neochi # coreモジュールのマウント
       - /neochi/ir_receiver/src/logs:/code/logs # logファイルのマウント
+    environment:
+      - PYTHONUNBUFFERED=1
     network_mode: "host"
     depends_on:
       - redis
