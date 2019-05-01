@@ -1,0 +1,6 @@
+- name: clone neochi-core
+  git:
+    repo: 'https://github.com/mpsamurai/ir-receiver.git'
+    dest: /neochi/ir_receiver
+  become: true
+  become_user: pi

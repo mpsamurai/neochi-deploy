@@ -5,4 +5,5 @@
     - core
     - kinesis
     - clap-detector
-    - docker_build
+    - docker_build    
+    - ir_receiver
