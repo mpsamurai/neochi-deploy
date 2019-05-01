@@ -1,0 +1,33 @@
+- name: install libasound 
+  apt:
+    name: 'libasound2-dev'
+    state: present
+    update-cache: yes
+  become: true
+
+- name: install pip
+  apt:
+    name: 'python-pip'
+    state: present
+    update-cache: yes
+  become: true
+
+- name: install alsaaudio lib for python
+  pip:
+    name: 'pyalsaaudio'
+    state: present
+  become: true
+  become_user: pi
+
+- name: clone clap-detector
+  git:
+    repo: 'https://github.com/mpsamurai/clap-detector.git'
+    dest: /neochi/clap-detector
+  become: true
+  become_user: pi
+
+- name: Create symlink to neochi-core
+  file:
+    src: "/neochi/neochi-core/src/neochi"
+    dest: "/neochi/clap-detector/src/neochi"
+    state: link
