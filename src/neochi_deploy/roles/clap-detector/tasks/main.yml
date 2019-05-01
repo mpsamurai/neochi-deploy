@@ -20,11 +20,11 @@
   become_user: pi
 
 - name: install numpy lib for python
-  pip:
-    name: 'numpy'
+  apt:
+    name: 'python-numpy'
     state: present
+    update-cache: yes
   become: true
-  become_user: pi
 
 - name: install redis for python
   pip:
