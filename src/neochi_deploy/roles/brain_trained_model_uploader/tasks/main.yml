@@ -1,0 +1,6 @@
+- name: clone neochi-core
+  git:
+    repo: 'https://github.com/mpsamurai/brain-trained-model-uploader.git'
+    dest: /neochi/brain_trained_model_uploader
+  become: true
+  become_user: pi
