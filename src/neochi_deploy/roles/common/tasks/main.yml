@@ -31,3 +31,9 @@
   become: true
   when: docker_compose_cmd is failed
 
+- name : intall PIGPIO
+  apt:
+    name: pigpio
+    state: present
+    update_cache: yes
+  become: true
