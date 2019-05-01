@@ -5,6 +5,13 @@
     update-cache: yes
   become: true
 
+- name: install pip
+  apt:
+    name: 'python-pip'
+    state: present
+    update-cache: yes
+  become: true
+
 - name: install alsaaudio lib for python
   pip:
     name: 'pyalsaaudio'
@@ -12,16 +19,13 @@
   become: true
   become_user: pi
 
-- name: Set volume for mic
-  command: amixer sset Mic 16 -c 1
-
 - name: clone clap-detector
   git:
     repo: 'https://github.com/mpsamurai/clap-detector.git'
     dest: /neochi/clap-detector
   become: true
   become_user: pi
-  
+
 - name: Create symlink to neochi-core
   file:
     src: "/neochi/neochi-core/src/neochi"
