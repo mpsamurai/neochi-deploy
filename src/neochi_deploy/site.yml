@@ -3,5 +3,6 @@
   roles:
     - common
     - core
+    - ir-sender
     - kinesis
     - docker_build

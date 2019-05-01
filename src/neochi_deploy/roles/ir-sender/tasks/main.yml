@@ -1,0 +1,25 @@
+- name: clone ir-sender
+  git:
+    repo: 'https://github.com/mpsamurai/ir-sender.git'
+    dest: /neochi/ir-sender
+    force: yes
+  become: true
+  become_user: pi
+
+- name: install pip...should be moved to common
+  apt:
+    name: python3-pip
+    update_cache: yes
+  become: true
+
+- name: pip install pigpio...should be moved to common
+  pip:
+    name: pigpio
+    executable: pip3
+
+- name: run pigpiod...should be moved to common
+  systemd:
+    state: started
+    name: pigpiod
+  become: true
+
