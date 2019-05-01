@@ -1,0 +1,7 @@
+---
+- hosts: neochi
+  roles:
+    - common
+    - core
+    - kinesis
+    - docker_build

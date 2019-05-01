@@ -1,0 +1,24 @@
+- name: copy Dockerfile
+  copy:
+    src: Dockerfile
+    dest: /neochi/Dockerfile
+    owner: pi
+    group: pi
+    mode: 0644
+
+- name: copy docker-compose.yml
+  copy:
+    src: docker-compose.yml
+    dest: /neochi/docker-compose.yml
+    owner: pi
+    group: pi
+    mode: 0644
+
+- name: copy run.sh
+  copy:
+    src: run.sh
+    dest: /neochi/run.sh
+    owner: pi
+    group: pi
+    mode: 0755
+

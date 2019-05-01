@@ -1,0 +1,33 @@
+- name: install development environment
+  apt:
+    name: 'git'
+    state: present
+    update_cache: yes
+  become: true
+
+- name: create /neochi directory
+  file:
+    path: /neochi
+    state: directory
+    owner: pi
+    group: pi
+    mode: 0755
+  become: true
+
+- name: clone neochi-docker-dev-base
+  git:
+    repo: 'https://github.com/mpsamurai/neochi-docker-dev-base.git'
+    dest: /neochi/neochi-docker-dev-base
+  become: true
+  become_user: pi
+
+- name: check if docker-compose exists
+  command: 'docker-compose --version'
+  register: docker_compose_cmd
+  ignore_errors: true
+
+- name: install docker
+  shell: /neochi/neochi-docker-dev-base/docker-installer.sh
+  become: true
+  when: docker_compose_cmd is failed
+

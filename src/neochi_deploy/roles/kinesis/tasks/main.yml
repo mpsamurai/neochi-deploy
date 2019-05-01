@@ -1,0 +1,6 @@
+- name: clone neochi-core
+  git:
+    repo: 'https://github.com/mpsamurai/kinesis.git'
+    dest: /neochi/kinesis
+  become: true
+  become_user: pi
