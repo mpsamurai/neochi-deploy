@@ -19,6 +19,20 @@
   become: true
   become_user: pi
 
+- name: install numpy lib for python
+  pip:
+    name: 'numpy'
+    state: present
+  become: true
+  become_user: pi
+
+- name: install redis for python
+  pip:
+    name: 'redis'
+    state: present
+  become: true
+  become_user: pi
+
 - name: clone clap-detector
   git:
     repo: 'https://github.com/mpsamurai/clap-detector.git'
