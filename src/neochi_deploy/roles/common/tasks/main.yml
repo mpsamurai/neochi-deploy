@@ -43,5 +43,10 @@
   become: true
 
 - name: create IR data directory
-  command: mkdir -p /data/ir
+  file:
+    path: /data/ir
+    state: directory
+    owner: pi
+    group: pi
+    mode: 0755
   become: true
