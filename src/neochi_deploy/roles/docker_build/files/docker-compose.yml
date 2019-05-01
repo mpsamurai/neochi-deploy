@@ -12,3 +12,14 @@ services:
       - /neochi/neochi-core/src/neochi:/code/neochi
     depends_on:
       - redis
+  ir_receiver:
+    build:
+      context: ir_receiver
+      dockerfile: Dockerfile-raspbian
+    volumes:
+      - /neochi/data/ir:/data # リモコン信号ファイルの保存先。/dataはアプリ内でハードコードされているので注意
+      - /neochi/neochi-core/src/neochi:/code/neochi # coreモジュールのマウント
+      - /neochi/ir_receiver/src/logs:/code/logs # logファイルのマウント
+    network_mode: "host"
+    depends_on:
+      - redis

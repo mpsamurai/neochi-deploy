@@ -30,10 +30,18 @@
   shell: /neochi/neochi-docker-dev-base/docker-installer.sh
   become: true
   when: docker_compose_cmd is failed
+  
+- name: start pigpio service
+  command: sudo systemctl start pigpiod
+  become: true
 
 - name : intall PIGPIO
   apt:
     name: pigpio
     state: present
     update_cache: yes
+  become: true
+  
+- name: create IR data directory
+  command: mkdir -p /data/ir
   become: true
