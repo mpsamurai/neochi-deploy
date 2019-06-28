@@ -3,6 +3,7 @@
   roles:
     - common
     - core
+    - ir-sender
     - kinesis
     - clap-detector
     - ir_receiver
